@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
-/* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+/* appearance, 外观 */
+static const unsigned int borderpx  = 1;        /* border pixel of windows, 窗口边缘的像素 */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -28,7 +28,7 @@ static const char *colors[][3]      = {
 	[SchemeHid]  = { col_cyan,  col_gray1, col_cyan  },
 };
 
-/* tagging */
+/* tagging, 标签 */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
@@ -41,7 +41,7 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
-/* layout(s) */
+/* layout(s), 布局 */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
@@ -53,7 +53,7 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 };
 
-/* key definitions */
+/* key definitions, 按键定义 */
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -64,7 +64,7 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-/* commands */
+/* commands, 命令定义 */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = { "rofi", "-show", "run", NULL };
@@ -72,6 +72,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
+/* 快捷键绑定 */
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = roficmd} },
@@ -127,7 +128,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
-/* button definitions */
+/* button definitions , 鼠标事件定义*/
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
