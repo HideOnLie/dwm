@@ -74,6 +74,7 @@ static const Layout layouts[] = {
 /* commands, 命令定义 */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *slockcmd[] = { "slock", NULL };
 static const char *roficmd[] = { "rofi", "-show", "run", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
@@ -113,7 +114,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },                           //杀死窗口
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },            //平铺布局
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },            //浮动布局
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },            //xx布局
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },            //窗口布局
 	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },                           //全屏
 	{ MODKEY,                       XK_space,  setlayout,      {0} },                           //切换到最近一次布局
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },                           //开启/关闭浮动窗口
@@ -134,6 +135,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },                           //退出dwm
+    /* 自定义 */
+	{ Mod4Mask,                     XK_l,      spawn,          {.v = slockcmd} },                //锁屏
 };
 
 /* button definitions , 鼠标事件定义*/
