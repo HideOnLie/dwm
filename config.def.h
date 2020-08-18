@@ -141,6 +141,7 @@ static Key keys[] = {
 
 /* button definitions , 鼠标事件定义*/
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+/* Button1 : 鼠标左键   Button3 : 鼠标右键 */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
