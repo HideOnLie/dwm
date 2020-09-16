@@ -75,7 +75,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *slockcmd[] = { "slock", NULL };
-static const char *roficmd[] = { "rofi", "-show", "run", NULL };
+static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
@@ -89,8 +89,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },                           //打开/关闭bar
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },                    //在窗口栈切换焦点，下一个
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },                    //在窗口栈切换焦点，上一个
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },                    //多窗口水平排布
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },                    //多窗口垂直排布
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },                  //主窗口占的空间变小
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },                  //主窗口占的空间变大
 	{ MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } },                    //增大窗口之间的间距
@@ -146,14 +146,14 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },              //左键窗口栏，隐藏/打开窗口
+	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },              //中建窗口栏，切换窗口焦点
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+	{ ClkTagBar,            0,              Button1,        view,           {0} },              //左键tag,查看对应tag
+	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },              //右键tag,预览对应tag
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
